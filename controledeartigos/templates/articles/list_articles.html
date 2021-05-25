@@ -1,0 +1,41 @@
+{{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Feito por</th>
+                        <th scope="col">Última edição</th>
+                        <th scope="col">Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                          {% for article in articles  %}
+                          <tr>
+                            <td>{{article.name}}</td>
+                            <td>{{article.get_status_display}}</td>
+                            <td>{{article.owner.first_name}}</td>
+                            <td>{{article.last_updated}}</td>
+
+                            <td>
+                              <a href="#" class="btn btn-primary btn-sm">Detalhes</a>
+                              <a href="#" class="btn btn-primary btn-sm">Editar</a>
+                              <a href="#" class="btn btn-danger btn-sm confirm-delete" >Excluir</a>
+                            </td>
+                          </tr>
+                          {% endfor %}   
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock body %}
