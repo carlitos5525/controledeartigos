@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from articles.models import Article
 from articles.forms import ArticleForm
 from django.contrib import messages
@@ -44,4 +44,36 @@ def create_article(request):
         'form': form
     }
     return render(request, template_name, context)
+
+def edit_article(request, id):
+    template_name = 'articles/edit_article.html'
+    context = {}
+    article = get_object_or_404(Article, article_id=id, is_deleted=False)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            if article.product == 'CE':
+                return redirect('artigos:celero_list_articles')
+            elif article.product == 'ST':
+                return redirect('artigos:start_list_articles')
+            elif article.product == 'FW':
+                return redirect('artigos:flow_list_articles')
+    else:
+        form = ArticleForm(instance=article)
+    context['form'] = form
+    return render(request, template_name, context)
             
+def delete_article(request, id):
+    template_name = 'article/delete_article.html'
+    article = get_object_or_404(Article, article_id=id, is_deleted=False)
+    print(article.name)
+    article.is_deleted = True
+    article.save()
+    if article.product == 'CE':
+        return redirect('artigos:celero_list_articles')
+    elif article.product == 'ST':
+        return redirect('artigos:start_list_articles')
+    elif article.product == 'FW':
+        return redirect('artigos:flow_list_articles')
+    

@@ -71,6 +71,16 @@
           <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
           <script src="{% static 'js/jquery.mask.min.js' %}"></script>
           <script src="{% static 'js/mask.js' %}"></script>
+
+          <script>
+            $(document).on('click', '.confirm-delete', function() {
+                $('#confirmDeleteModal').attr('caller-id', $(this).attr('id'));
+            });
+            $(document).on('click', '#confirmDeleteButtonModal', function(){
+                var caller = $('#confirmDeleteButtonModal').closest('.modal').attr('caller-id');
+                window.location = $('#'.concat(caller)).attr('href');
+            });
+          </script>
         </footer>
     </body>
 </html>

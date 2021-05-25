@@ -9,4 +9,6 @@ urlpatterns = [
     path('start/', views.start_list_articles, name='start_list_articles'),
     path('celero/', views.celero_list_articles, name='celero_list_articles'),
     path('novo_artigo/', views.create_article, name='create_article'),
+    path('editar/<str:id>', views.edit_article, name='edit_article'),
+    path('deletar/<str:id>', views.delete_article, name='delete_article'),
 ]
