@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 
-# Create your views here.
+
+def list_articles(request):
+    return render(request, 'base.html', {})
