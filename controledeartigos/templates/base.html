@@ -54,7 +54,11 @@
                   <a class="dropdown-item" href="#">Novo Artigo</a>
                 </div>
               </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'artigos:list_deleted_articles' %}">Artigos Deletados <span class="sr-only"></span></a>
+              </li>
             </ul>
+            
           </div>
         </nav>
 
@@ -78,6 +82,13 @@
             });
             $(document).on('click', '#confirmDeleteButtonModal', function(){
                 var caller = $('#confirmDeleteButtonModal').closest('.modal').attr('caller-id');
+                window.location = $('#'.concat(caller)).attr('href');
+            });
+            $(document).on('click', '.confirm-recuperation', function() {
+                $('#confirmRecuperationModal').attr('caller-id', $(this).attr('id'));
+            });
+            $(document).on('click', '#confirmRecuperationButtonModal', function(){
+                var caller = $('#confirmRecuperationButtonModal').closest('.modal').attr('caller-id');
                 window.location = $('#'.concat(caller)).attr('href');
             });
           </script>

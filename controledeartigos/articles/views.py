@@ -67,7 +67,6 @@ def edit_article(request, id):
 def delete_article(request, id):
     template_name = 'article/delete_article.html'
     article = get_object_or_404(Article, article_id=id, is_deleted=False)
-    print(article.name)
     article.is_deleted = True
     article.save()
     if article.product == 'CE':
@@ -76,4 +75,22 @@ def delete_article(request, id):
         return redirect('artigos:start_list_articles')
     elif article.product == 'FW':
         return redirect('artigos:flow_list_articles')
+
+def list_deleted_articles(request):
+    template_name = 'articles/list_deleted_articles.html'
+    context = {}
+    deleted_articles = Article.objects.filter(is_deleted=True)
+    context['articles'] = deleted_articles
+    return render(request, template_name, context)
     
+def recuperate_article(request, id):
+    template_name = 'article/delete_article.html'
+    article = get_object_or_404(Article, article_id=id, is_deleted=True)
+    article.is_deleted = False
+    article.save()
+    if article.product == 'CE':
+        return redirect('artigos:celero_list_articles')
+    elif article.product == 'ST':
+        return redirect('artigos:start_list_articles')
+    elif article.product == 'FW':
+        return redirect('artigos:flow_list_articles')
