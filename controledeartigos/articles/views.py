@@ -1,9 +1,12 @@
+from django.contrib.auth import login
 from django.shortcuts import render, redirect, get_object_or_404
 from articles.models import Article
 from articles.forms import ArticleForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/accounts/login')
 def flow_list_articles(request):
     template_name = 'articles/list_articles.html'
     articles = Article.objects.filter(is_deleted=False, product='FW')
@@ -12,6 +15,7 @@ def flow_list_articles(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='accounts/login')
 def start_list_articles(request):
     template_name = 'articles/list_articles.html'
     articles = Article.objects.filter(is_deleted=False, product='ST')
@@ -20,6 +24,7 @@ def start_list_articles(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='accounts/login')
 def celero_list_articles(request):
     template_name = 'articles/list_articles.html'
     articles = Article.objects.filter(is_deleted=False, product='CE')
