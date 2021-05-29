@@ -13,5 +13,6 @@ urlpatterns = [
     path('deletar/<str:id>', views.delete_article, name='delete_article'),
     path('deletados/', views.list_deleted_articles, name='list_deleted_articles'),
     path('recuperar/<str:id>', views.recuperate_article, name='recuperate_article'),
-    path('', views.celero_list_articles, name='home'),
+    path('realizado/<str:article_id>', views.change_article_to_done, name='change_to_done'),
+    path('', views.get_user_pendent_articles, name='home'),
 ]
