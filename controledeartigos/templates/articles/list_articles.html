@@ -5,6 +5,163 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+              
+              {% if product == 'Flow' %}
+              <br>
+              <h2>Lista de Artigos Flow</h2>
+              <br>
+              <div class="form-check">
+                <form class="form-inline my-2 my-md-0" action="{% url 'articles:flow_list_articles' %}">
+                  <div class="row">
+                    <div class="col-2">
+                      <label>Data de início</label>
+                      <input class="form-control" type="date" name="date_start_with">
+                    </div>
+                    <div class="col-2">
+                      <label>Data Final</label>
+                      <input class="form-control" type="date"  name="date_end_with">
+                    </div>
+                    <div class="col-4">
+                      <label>Nome do Artigo</label>
+                      <input class="form-control" name="query" type="text" placeholder="Pesquisar" aria-label="Search">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputState">Feito por</label>
+                      <select id="inputState" class="form-control" name="usuario">
+                        <option selected value="">Escolha o usuário</option>
+                        {% for user in users %}
+                        <option value="{{user.id}}">{{user.first_name |default:user.username}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group col-md-1">
+              
+                      <button class="btn btn-outline-success my-2 my-sn-0" type="submit">Filtrar</button>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-1">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="pendente">
+                        <label class="form-check-label" for="inlineCheckbox1">Pendente</label>
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="realizado">
+                        <label class="form-check-label" for="inlineCheckbox1">Realizado</label>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  
+              </form>
+              {% elif product == 'Start' %}
+              <br>
+              <h2>Lista de Artigos Start</h2>
+              <br>
+              <div class="form-check">
+                <form class="form-inline my-2 my-md-0" action="{% url 'articles:start_list_articles' %}">
+                  <div class="row">
+                    <div class="col-2">
+                      <label>Data de início</label>
+                      <input class="form-control" type="date" name="date_start_with">
+                    </div>
+                    <div class="col-2">
+                      <label>Data Final</label>
+                      <input class="form-control" type="date"  name="date_end_with">
+                    </div>
+                    <div class="col-4">
+                      <label>Nome do Artigo</label>
+                      <input class="form-control" name="query" type="text" placeholder="Pesquisar" aria-label="Search">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputState">Feito por</label>
+                      <select id="inputState" class="form-control" name="usuario">
+                        <option selected value="">Escolha o usuário</option>
+                        {% for user in users %}
+                        <option value="{{user.id}}">{{user.first_name |default:user.username}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group col-md-1">
+              
+                      <button class="btn btn-outline-success my-2 my-sn-0" type="submit">Filtrar</button>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-1">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="pendente">
+                        <label class="form-check-label" for="inlineCheckbox1">Pendente</label>
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="realizado">
+                        <label class="form-check-label" for="inlineCheckbox1">Realizado</label>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  
+              </form>
+              {% elif product == 'Celero' %}
+              <br>
+              <h2>Lista de Artigos Celero</h2>
+              <br>
+              <div class="form-check">
+                <form class="form-inline my-2 my-md-0" action="{% url 'articles:celero_list_articles' %}">
+                  <div class="row">
+                    <div class="col-2">
+                      <label>Data de início</label>
+                      <input class="form-control" type="date" name="date_start_with">
+                    </div>
+                    <div class="col-2">
+                      <label>Data Final</label>
+                      <input class="form-control" type="date"  name="date_end_with">
+                    </div>
+                    <div class="col-4">
+                      <label>Nome do Artigo</label>
+                      <input class="form-control" name="query" type="text" placeholder="Pesquisar" aria-label="Search">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputState">Feito por</label>
+                      <select id="inputState" class="form-control" name="usuario">
+                        <option selected value="">Escolha o usuário</option>
+                        {% for user in users %}
+                        <option value="{{user.id}}">{{user.first_name |default:user.username}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group col-md-1">
+              
+                      <button class="btn btn-outline-success my-2 my-sn-0" type="submit">Filtrar</button>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-1">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="pendente">
+                        <label class="form-check-label" for="inlineCheckbox1">Pendente</label>
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="realizado">
+                        <label class="form-check-label" for="inlineCheckbox1">Realizado</label>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  
+              </form>
+              {% endif %}
+                
+              
                 <table class="table">
                     <thead>
                       <tr>
